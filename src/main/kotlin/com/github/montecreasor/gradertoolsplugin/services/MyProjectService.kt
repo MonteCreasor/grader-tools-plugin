@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.montecreasor.gradertoolsplugin.services
 
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
+import com.github.montecreasor.gradertoolsplugin.MyBundle
 
 class MyProjectService(project: Project) {
 
