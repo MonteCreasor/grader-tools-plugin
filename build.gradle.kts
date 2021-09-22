@@ -24,6 +24,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("org.gitlab:java-gitlab-api:4.1.1")
+}
+
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     pluginName.set(properties("pluginName"))
@@ -34,6 +38,10 @@ intellij {
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
+    //ideDir = "/home/monte/tools/android/arctic-fox"
+    tasks.runIde {
+        ideDir.set(File("/home/monte/tools/android/arctic-fox"))
+    }
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin

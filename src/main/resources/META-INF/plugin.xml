@@ -1,18 +1,20 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.montecreasor.gradertoolsplugin</id>
-    <name>grader-tools-plugin</name>
-    <vendor>montecreasor</vendor>
+    <id>edu.vanderbilt.grader.tools</id>
+    <name>Grader Tools</name>
+    <vendor>Monte Creasor</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.montecreasor.gradertoolsplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.montecreasor.gradertoolsplugin.services.MyProjectService"/>
+        // To run/test plugin in Android Studio
+        <defaultProjectTypeProvider type="Android"/>
+        <toolWindow id="Vanderbilt Tools" secondary="true" icon="/toolWindow/gold.png" anchor="bottom"
+                    factoryClass="edu.vanderbilt.grader.tools.GraderToolWindowFactory"/>
+        <projectService serviceImplementation="edu.vanderbilt.grader.tools.persist.Config"/>
+        <projectService serviceImplementation="edu.vanderbilt.grader.tools.persist.RepoState"/>
+        <projectService serviceImplementation="edu.vanderbilt.grader.tools.persist.LogState"/>
+        <projectService serviceImplementation="edu.vanderbilt.grader.tools.services.GraderTools"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.montecreasor.gradertoolsplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
